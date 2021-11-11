@@ -77,3 +77,13 @@ def part_of_day(time):
     elif datetime.time(21, 0, 0) <= time or time <= datetime.time(3, 59, 0):
         index = 9
     return pod[index]
+
+
+def time_this(func):
+    def calc_time(*args, **kwargs):
+        before = datetime.datetime.now()
+        x = func(*args, **kwargs)
+        after = datetime.datetime.now()
+        print("Function {} elapsed time: {}".format(func.__name__, after-before))
+        return x
+    return calc_time
